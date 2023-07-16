@@ -63,3 +63,147 @@ Asignatura(s):
     - Notas: [ 3.4 | 4.8 | 2.3 ]
     - Promedio: 3.5
 ```
+
+### UML Proyecto:
+
+**Simbolo** | **Definición**
+:-:|:-:
+`-` | privado
+`+` | publico
+`$` | estatico
+
+```mermaid
+---
+title: Estructura del proyecto
+---
+classDiagram
+class Persona {
+ -String nombre
+
+	+Persona()
+	+Persona(String nombre)
+
+	+getNombre() String
+	+setNombre(String nombre)
+}
+
+class Estudiante {
+  -Carrera carrera;
+  -ArrayList~Asignatura~ asignaturas
+  -ArrayList~Nota~ notas
+
+	+Estudiante(Carrera carrera)
+
+	+agregarAsignatura(Asignatura asignatura)
+	+existeAsignatura(Asignatura asignatura) boolean
+    
+	+generarNotas()
+
+  +imprimirDatos()
+	+imprimirNotasAsignatura(Asignatura asignatura)
+	+imprimirPromedioGeneral()
+
+	+getAsignaturas() ArrayList
+	+getCarrera() Carrera
+	+getNotas() ArrayList
+  +getPromedioAsignatura(Asignatura asignatura) float
+
+	+setCarrera(Carrera carrera)
+}
+
+class Nota {
+  -float nota
+  -Asignatura asignatura
+
+  +float NOTA_MIN$
+	+float NOTA_MAX$
+
+	+Nota()
+	+Nota(Asignatura asignatura)
+	+Nota(float nota)
+	+Nota(float nota, Asignatura asignatura)
+    
+	+getNota() float
+  +getAsignatura() Asignatura
+	
+  +setNota(arg0:float)
+	+setAsignatura(arg0:Asignatura)
+}
+
+class Profesor {
+    -Asignatura asignatura
+
+	+Profesor(Asignatura asignatura)
+
+	+getAsignatura() Asignatura
+	+setAsignatura(Asignatura asignatura)
+}
+
+class Carrera {
+  -String nombre;
+  -ArrayList~Estudiante~ estudiantes
+  -ArrayList~Asignatura~ asignaturas
+
+	+Carrera()
+	+Carrera(arg0:String)
+
+	+agregarAsignatura(Asignatura asignatura)
+	+agregarEstudiante(Estudiante estudiante)
+
+	+existeAsignatura(Asignatura asignatura) boolean
+	+existeEstudiante(Estudiante estudiante) boolean
+
+	+generarNotas()
+
+	+getAsignaturas() ArrayList~Asignatura~
+	+getEstudiantes() ArrayList
+	+getNombre() String
+	+imprimirEstudiantes()
+	+setAsignaturas(ArrayList~Asignatura~ asignaturas)
+	+setEstudiantes(ArrayList~Estudiante~ estudiantes)
+	+setNombre(String nombre)
+}
+
+class Asignatura {
+  -String nombre;
+  -Profesor profesor;
+  -int cantidadEvaluaciones
+  -ArrayList~Estudiante~ estudiantes
+
+	+Asignatura()
+	
+  +Asignatura(String nombre)
+	+Asignatura(String nombre, int cantidadEvaluaciones)
+
+	+agregarEstudiante(Estudiante estudiante)
+
+	+existeEstudiante(Estudiante estudiante) boolean
+	
+  +getCantidadEvaluaciones() int
+	+getEstudiantes() ArrayList
+	+getNombre() String
+	+getProfesor() Profesor
+	
+  +setCantidadEvaluaciones(int cantidad)
+	+setNombre(String nombre)
+	+setProfesor(Profesor profesor)
+}
+
+class Utilidades {
+	+Utilidades()
+
+	+generarNota(float min, float max)$ float
+	+promediar(float total, int cantidad)$ float
+}
+
+Estudiante "1" --> "1" Nota : carries
+
+Carrera --|> Asignatura
+
+Profesor --|> Asignatura
+
+Persona --|> Estudiante
+Persona --|> Profesor
+
+Utilidades --|> Carrera
+```
