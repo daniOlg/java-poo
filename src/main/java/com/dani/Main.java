@@ -2,6 +2,31 @@ package com.dani;
 
 public class Main {
     public static void main(String[] args) {
+        Carrera informatica = new Carrera("Informatica");
+
+        Curso sec50 = new Curso("Sección 50");
+        informatica.agregarCurso(sec50);
+
+        Asignatura progAvanzada = new Asignatura("Programación Avanzada");
+        sec50.agregarAsignatura(progAvanzada);
+
+        Profesor ivan = new Profesor("Iván");
+        sec50.agregarProfesor(ivan, progAvanzada);
+
+        Estudiante daniel = new Estudiante("Daniel");
+        informatica.agregarEstudiante(daniel);
+
+        // Chequeo
+        System.out.println(informatica.getCursos());
+        System.out.println(informatica.getEstudiantes());
+
+        System.out.println(sec50.getAsignaturas());
+        System.out.println(sec50.getEstudiantes());
+        System.out.println(sec50.getProfesores());
+
+        System.out.println(progAvanzada.getProfesor());
+        System.out.println(progAvanzada.getEstudiantes());
+
         /*
         Requerimientos:
         - Crear 5 estudiantes y generar notas al azar para cada asignatura
