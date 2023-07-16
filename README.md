@@ -196,7 +196,7 @@ class Utilidades {
 	+promediar(float total, int cantidad)$ float
 }
 
-Estudiante "1" --> "1" Nota : carries
+Estudiante "1" --> "1" Nota : utiliza
 
 Carrera --|> Asignatura
 
