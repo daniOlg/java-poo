@@ -5,16 +5,18 @@ import java.util.ArrayList;
 public class Asignatura {
     private String nombre;
     private Profesor profesor;
-    private int cantidadNotas;
+    private int cantidadEvaluaciones = 1;
     private ArrayList<Estudiante> estudiantes = new ArrayList<>();
+    private final float NOTA_MIN = 1.0f;
+    private final float NOTA_MAX = 7.0f;
 
     // Funciones
     public void agregarEstudiante(Estudiante estudiante) {
-        if(existeEstudiante(estudiante)) return;
-
+        if(existeEstudiante(estudiante)) return; //TODO: Log
         estudiantes.add(estudiante);
 
-        // TODO: Establecer notas de la asignatura en nota minima
+        // Agregar esta asignatura al estudiante
+        estudiante.agregarAsignatura(this);
     }
 
     public boolean existeEstudiante(Estudiante estudiante) {
@@ -32,6 +34,11 @@ public class Asignatura {
         this.nombre = nombre;
     }
 
+    public Asignatura(String nombre, int cantidadEvaluaciones) {
+        this.nombre = nombre;
+        this.cantidadEvaluaciones = cantidadEvaluaciones;
+    }
+
     // Getters & Setters
     public String getNombre() {
         return nombre;
@@ -47,14 +54,17 @@ public class Asignatura {
 
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
+
+        // Asignar esta asignatura al profesor
+        profesor.setAsignatura(this);
     }
 
-    public int getCantidadNotas() {
-        return cantidadNotas;
+    public int getCantidadEvaluaciones() {
+        return cantidadEvaluaciones;
     }
 
-    public void setCantidadNotas(int cantidadNotas) {
-        this.cantidadNotas = cantidadNotas;
+    public void setCantidadEvaluaciones(int cantidadEvaluaciones) {
+        this.cantidadEvaluaciones = cantidadEvaluaciones;
     }
 
     public ArrayList<Estudiante> getEstudiantes() {

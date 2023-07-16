@@ -4,21 +4,36 @@ import java.util.ArrayList;
 
 public class Carrera {
     private String nombre;
-    private ArrayList<Curso> cursos = new ArrayList<>();
     private ArrayList<Estudiante> estudiantes = new ArrayList<>();
+    private ArrayList<Asignatura> asignaturas = new ArrayList<>();
 
-    // Funciones
-    public void agregarCurso(Curso curso) {
-        if(existeCurso(curso)) return; //TODO: Log
-        cursos.add(curso);
+    // Funciones para los requerimientos
+    public void generarNotas() {
+        for(Estudiante _estudiante : estudiantes) {
+            _estudiante.generarNotas();
+        }
+    }
+    public void imprimirEstudiantes() {
+        System.out.println("Carrera: " + nombre);
+        System.out.println("Cantidad de estudiantes: " + estudiantes.size());
+        for(Estudiante _estudiante : estudiantes) {
+            _estudiante.imprimirDatos();
+        }
     }
 
+    // Funciones
     public void agregarEstudiante(Estudiante estudiante) {
         if(existeEstudiante(estudiante)) return; //TODO: Log
         estudiantes.add(estudiante);
 
-        // TODO: Aleatorizar agregado de estudiante a los cursos
-        cursos.get(0).agregarEstudiante(estudiante);
+        for(Asignatura _asignatura : asignaturas) {
+            _asignatura.agregarEstudiante(estudiante);
+        }
+    }
+
+    public void agregarAsignatura(Asignatura asignatura) {
+        if(existeAsignatura(asignatura)) return; //TODO: log
+        asignaturas.add(asignatura);
     }
 
     public boolean existeEstudiante(Estudiante estudiante) {
@@ -28,12 +43,13 @@ public class Carrera {
         return false;
     }
 
-    public boolean existeCurso(Curso curso) {
-        for(Curso _curso : cursos)
-            if(_curso == curso) return true;
+    public boolean existeAsignatura(Asignatura asignatura) {
+        for(Asignatura _asignatura : asignaturas)
+            if(_asignatura == asignatura) return true;
 
         return false;
     }
+
     // Constructores
     public Carrera() {
     }
@@ -51,12 +67,12 @@ public class Carrera {
         this.nombre = nombre;
     }
 
-    public ArrayList<Curso> getCursos() {
-        return cursos;
+    public ArrayList<Asignatura> getAsignaturas() {
+        return asignaturas;
     }
 
-    public void setCursos(ArrayList<Curso> cursos) {
-        this.cursos = cursos;
+    public void setAsignaturas(ArrayList<Asignatura> asignaturas) {
+        this.asignaturas = asignaturas;
     }
 
     public ArrayList<Estudiante> getEstudiantes() {
