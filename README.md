@@ -198,12 +198,12 @@ class Utilidades {
 
 Estudiante "1" --> "1" Nota : utiliza
 
-Carrera --|> Asignatura
+Carrera --> Asignatura : utiliza
 
-Profesor --|> Asignatura
+Profesor --> Asignatura : utiliza
 
-Persona --|> Estudiante
-Persona --|> Profesor
+Persona --|> Estudiante : herencia
+Persona --|> Profesor : herencia
 
-Utilidades --|> Carrera
+Utilidades --> Carrera : utilizado globalmente
 ```
