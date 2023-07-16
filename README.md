@@ -66,11 +66,9 @@ Asignatura(s):
 
 ### UML Proyecto:
 
-**Simbolo** | **Definición**
-:-:|:-:
-`-` | privado
-`+` | publico
-`$` | estatico
+**Simbolo** | `-` | `+` | `$`
+:-:|:-:|:-:|:-:
+**Definición** | privado | publico | estatico
 
 ```mermaid
 ---
