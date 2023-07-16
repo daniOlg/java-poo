@@ -14,6 +14,7 @@ public class Carrera {
         }
     }
     public void imprimirEstudiantes() {
+        System.out.println("---------------------------------------------");
         System.out.println("Carrera: " + nombre);
         System.out.println("Cantidad de estudiantes: " + estudiantes.size());
         for(Estudiante _estudiante : estudiantes) {

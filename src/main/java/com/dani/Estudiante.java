@@ -14,24 +14,24 @@ public class Estudiante extends Persona {
         }
     }
     public void imprimirDatos() {
-        System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
+        System.out.println("---------------------------------------------");
 
         System.out.println("Estudiante: " + nombre);
+
+        imprimirPromedioGeneral();
 
         System.out.println("Asignatura(s):");
         for(Asignatura _asignatura : asignaturas) {
             imprimirNotasAsignatura(_asignatura);
         }
-
-        imprimirPromedioGeneral();
     }
 
     public void imprimirNotasAsignatura(Asignatura asignatura) {
-        System.out.println("  " + asignatura.getNombre());
+        System.out.println("  + " + asignatura.getNombre());
 
         float total = 0f;
 
-        System.out.print("  - Notas: [ ");
+        System.out.print("    - Notas: [ ");
         int count = 0;
         for(Nota _nota : notas) {
             if(_nota.getAsignatura() == asignatura) {
@@ -42,7 +42,7 @@ public class Estudiante extends Persona {
             }
         }
         System.out.println(" ]");
-        System.out.println("  - Promedio: " + Utilidades.promediar(total, count));
+        System.out.println("    - Promedio: " + Utilidades.promediar(total, count));
     }
 
     public void imprimirPromedioGeneral() {
