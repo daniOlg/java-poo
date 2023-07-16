@@ -6,7 +6,7 @@
 
 3. Escriba un método que muestre el detalle de las notas de los estudiantes, y su promedio. Considere que cada método debe ser correctamente identificado con la Clase que lo debe desplegar, y que la herencia es un elemento a evaluar.
 
-> Salida del programa, utilizando utilidades para generar y promediar notas:
+> Salida del programa, usando utilidades para generar y promediar notas:
 
 ```
 ---------------------------------------------
